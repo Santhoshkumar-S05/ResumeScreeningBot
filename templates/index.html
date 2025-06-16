@@ -1,0 +1,191 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Screening Bot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+    .hero-section {
+      text-align: center;
+      color: white;
+      padding: 60px 20px 30px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .hero-icon {
+      font-size: 4rem;
+      display: inline-block;
+      animation: bounce 3s ease-in-out infinite;
+    }
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin: 10px 0;
+    }
+    .hero-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    .features-section {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      animation: slideUp 0.8s ease-out 0.5s both;
+    }
+    .features-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: #f9fafb;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .form-section {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .form-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .file-upload-area, textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      border: 2px dashed #d6d6d6;
+      background: #f0f4f8;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: linear-gradient(135deg, #5a67d8, #6b46c1);
+    }
+    #result {
+      margin-top: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-icon">🤖</div>
+      <h1>Resume Screening Bot</h1>
+      <p class="hero-subtitle">AI-powered resume analysis & job matching</p>
+    </div>
+
+    <div class="features-section">
+      <h2>🔍 What Our Bot Can Do</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📄</div>
+          <h4>Resume Analysis</h4>
+          <p>Analyzes resumes using AI and natural language processing</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h4>JD Matching</h4>
+          <p>Compares resume with job descriptions to find missing skills</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💡</div>
+          <h4>Feedback & Score</h4>
+          <p>Provides score and tailored suggestions to improve resumes</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <form id="resumeForm" enctype="multipart/form-data">
+        <div class="form-grid">
+          <input type="file" name="resume" accept=".pdf" required />
+          <textarea name="jd" placeholder="Paste Job Description here..." required></textarea>
+        </div>
+        <button type="submit">🔍 Analyze Resume</button>
+      </form>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
